@@ -10,6 +10,9 @@ body{
     display: flex;
     flex-direction: column;
 }
+a{
+    color:#000
+}
 /*Navigation Bar*/
 .header {
     display: flex;
@@ -111,7 +114,7 @@ body{
 .shop-btn button{
     padding: 8px;
     font-size: 20px;
-    border: 1.5px solid #fdfdfd;
+    border: 1.5px solid #cecece;
     border-radius: 3px;
     transition: 0.8s;
 }
@@ -142,34 +145,50 @@ body{
 .nike-link{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     background-color: #5e5e5e;
     height: 300px;
     width: 430px;
     margin: 16px;
-    background-image: linear-gradient(rgba(68, 68, 68, 0.158),rgba(94, 94, 94, 0.137)),url("assets/Nike\ shoes\ image.png");
+    padding-top: 30px;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.212),rgba(0, 0, 0, 0.664)),url("assets/Nike\ shoes\ image.png");
     background-position: center;
 }
+.nike-link h2{
+    display: flex;
+    justify-content: center;
+    transition: 0.5s;
+}
+.nike-link h2:hover{
+    color:rgb(170, 4, 4)
+}
+.nike-link h2 i{
+    font-size: 33px;
+    }
 .adidas-link{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     background-color: #5e5e5e;
     height: 300px;
     width: 430px;
     margin: 16px;
-    padding-top: 20px;
-    background-image: url("assets/adidas\ shoes\ image.png");
+    padding-top: 30px;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.212),rgba(0, 0, 0, 0.664)),url("assets/adidas\ shoes\ image.png");
     background-position: center;
+    background-size: contain;
 }
 .adidas-link h2{
-    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    transition: 0.5s;
 }
-.nike-link h2{
-    margin-bottom: 50px;
+.adidas-link h2:hover{
+    color:rgb(170, 4, 4)
 }
+.adidas-link h2 i{
+    font-size: 33px;
+    }
 .checkSearchBtn,.checkCartBtn,.checkUserBtn{
     display: block;
     color: #fff;
@@ -234,7 +253,7 @@ body{
 }
 .footer-logo img{
     width: 200px;
-    height: 200px;
+    height: auto;
 }
 .footer-social i{
     position: relative;
