@@ -117,6 +117,7 @@ a{
     border: 1.5px solid #cecece;
     border-radius: 3px;
     transition: 0.8s;
+    color:#000;
 }
 .shop-btn button:hover{
     background-color: #b9b7b7;
