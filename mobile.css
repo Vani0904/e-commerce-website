@@ -148,12 +148,13 @@ a{
     flex-direction: column;
     align-items: center;
     background-color: #5e5e5e;
-    height: 300px;
+    height: 400px;
     width: 430px;
     margin: 16px;
     padding-top: 30px;
     background-image: linear-gradient(rgba(255, 255, 255, 0.212),rgba(0, 0, 0, 0.664)),url("assets/Nike\ shoes\ image.png");
     background-position: center;
+    background-repeat: no-repeat;
 }
 .nike-link h2{
     display: flex;
@@ -171,13 +172,14 @@ a{
     flex-direction: column;
     align-items: center;
     background-color: #5e5e5e;
-    height: 300px;
+    height: 400px;
     width: 430px;
     margin: 16px;
     padding-top: 30px;
     background-image: linear-gradient(rgba(255, 255, 255, 0.212),rgba(0, 0, 0, 0.664)),url("assets/adidas\ shoes\ image.png");
     background-position: center;
     background-size: contain;
+    background-repeat: no-repeat;
 }
 .adidas-link h2{
     display: flex;
@@ -346,6 +348,7 @@ a{
     .product-links{
         flex-direction: column;
         text-align: center;
+        height: 850px;
     }
     .nike-link{
         margin: 0 auto;
