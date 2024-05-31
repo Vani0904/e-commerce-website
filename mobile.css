@@ -152,7 +152,7 @@ a{
     width: 430px;
     margin: 16px;
     padding-top: 30px;
-    background-image: linear-gradient(rgba(255, 255, 255, 0.212),rgba(0, 0, 0, 0.664)),url("assets/Nike\ shoes\ image.png");
+    background-image: linear-gradient(rgba(201, 199, 199, 0.473),rgba(0, 0, 0, 0.596)),url("assets/Nike\ shoes\ image.png");
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -176,7 +176,7 @@ a{
     width: 430px;
     margin: 16px;
     padding-top: 30px;
-    background-image: linear-gradient(rgba(255, 255, 255, 0.212),rgba(0, 0, 0, 0.664)),url("assets/adidas\ shoes\ image.png");
+    background-image: linear-gradient(rgba(201, 199, 199, 0.473),rgba(0, 0, 0, 0.596)),url("assets/adidas\ shoes\ image.png");
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
