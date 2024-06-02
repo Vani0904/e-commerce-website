@@ -19,40 +19,55 @@
             </label>
             <input type ="checkbox" id="checkCart">
             <label for="checkCart" class="checkCartBtn">
-                <a href="cart.html"><i class='bx bx-basket' style='color:#ffffff' ></i></a>
+                <a href="cart.php"><i class='bx bx-basket' style='color:#ffffff' ></i></a>
             </label>
             <input type ="checkbox" id="checkUser">
             <label for="checkUser" class="checkUserBtn">
-                <a href="profile.html"><i class='bx bx-user' style='color:#ffffff' ></i></a>
+                <a href="profile.php"><i class='bx bx-user' style='color:#ffffff' ></i></a>
             </label>
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="about-us.html">About</a></li>
-                <li><a href="products.html">Shop</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="wishlist.html">Wishlist</a></li> 
+                <li><a href="products.php">Shop</a></li>
+                <li><a href="contact.php">Contact</a></li>
+                <li><a href="wishlist.php">Wishlist</a></li> 
             </ul>
-            <img class="logo" src="assets/Sneakerz Logo.png" alt="Sneakerz Logo">
+            <a href="index.php"><img class="logo" src="assets/Sneakerz Logo.png" alt="Sneakerz Logo"></a>
         </nav>
     </section>
     <main>
-        <h1 class="page-header">CONTACT US</h1>
-        <div class="contact-form-section">
-            <div class="contact-content">
-                <form name="contactForm" onsubmit="return validateForm()">
-                    <label for="fullName">Full Name</label>
-                    <input type="text" id="fname" name="fullName"
-                    placeholder="Enter Full Name">
-
-                    <label for="email">Email</label>
-                    <input type="text" id="email" name="email"
-                    placeholder="Enter Email">
-
-                    <label for="Message">Subject</label>
-                    <textarea id="subject" name="subject" placeholder="subject"
-                    style="height:300px"></textarea>
-                    <input type="submit" value="Submit">
-                </form>
+        <div class="hero-section">
+            <div class="hero-content">
+                <h2>New Summer</h2>
+                <h1><strong>Shoes Collection</strong></h1>
+                <p></p>
+                <a href="products.php" class="shop-btn"><button>Shop Now</button></a>
+            </div>
+        </div>
+        <div class="benefits-section">
+            <div class="info-group">
+                <i class='bx bxs-truck' style='color:rgb(170, 4, 4)' ></i>
+                <h3>FREE SHIPPING</h3>
+                <p>Free worldwide shipping on all orders.</p>
+            </div>
+            <div class="info-group">
+                <i class='bx bx-package' style="color: rgb(170, 4, 4)"></i>
+                <h3>30 DAYS RETURN</h3>
+                <p>No question return 
+                    and easy refund in 14 days.</p>
+            </div>
+            <div class="info-group">
+                <i class='bx bx-coin' style='color: rgb(170, 4, 4)' ></i>
+                <h3>QUICK PAYMENT</h3>
+                <p>100% Secure Payment</p>
+            </div>
+        </div>
+        <div class="product-links">
+            <div class="nike-link">
+                <a href="products.php"><h2>Explore Nike Shoes<i class='bx bx-chevron-right' style='color:#ffffff' ></i></h2></a>
+            </div>
+            <div class="adidas-link">
+                <a href="products.php" ><h2>Explore Adidas Shoes<i class='bx bx-chevron-right' style='color:#ffffff' ></i></h2></a>
             </div>
         </div>
         <footer class="footer-section">
@@ -88,9 +103,9 @@
                     <div>
                        <h3><strong>My Account</strong></h3>
                         <ul>
-                            <li><a href="cart.html">View Cart</a></li>
-                            <li><a href="wishlist.html">View Wishlist</a></li> 
-                            <li><a href="profile.html">Account Settings</a></li>
+                            <li><a href="cart.php">View Cart</a></li>
+                            <li><a href="wishlist.php">View Wishlist</a></li> 
+                            <li><a href="profile.php">Account Settings</a></li>
                         </ul>
                     </div>
                     <div>
@@ -106,5 +121,6 @@
             </div>
         </footer>
     </main>
+    <script src ="script.js" defer></script>
 </body>
 </html>

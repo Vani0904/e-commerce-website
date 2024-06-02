@@ -332,6 +332,7 @@ a{
     }
     .footer-row{
         flex-direction: column;
+        padding: 10px;
     }
     .footer-right i{
         font-size: 26px;
@@ -355,7 +356,8 @@ a{
         margin: 0 auto;
     }
     /*Contact Page*/
-    .contact-form-section input{
+    .contact-form-section input[type="text"],
+    .contact-form-section textarea{
         margin: 20px 0;
         min-width: 90%;
         height: 40px;
@@ -379,6 +381,27 @@ a{
 
 /*Checkout Page*/
 
+/*Profile Page*/
+.order-display{
+    height: 700px;
+    width: 700px;
+
+}
+.profile-section{
+    height: 70vh;
+}
+.profile-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.order-header{
+    display: flex;
+    width: 80%;
+    height: 50px;
+    
+}
 /*Wishlist Page*/
 
 /*Contact Page*/
@@ -391,7 +414,6 @@ a{
         text-align: left;
     }
     .contact-form-section input[type = text],
-    .contact-form-section input[type = submit],
     .contact-form-section textarea{
         margin: 20px 0;
         width: 100%;
@@ -407,6 +429,14 @@ a{
     .page-header{
         text-align: center;
         padding-top: 90px;
+    }
+    .submit-btn{
+        display: flex;
+        cursor: pointer;
+        max-width: 200px;
+        margin: 20px auto;
+        padding: 10px;
+        justify-content: center;
     }
  
 
