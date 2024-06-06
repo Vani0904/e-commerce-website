@@ -1,3 +1,52 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] == "POST"){
+    include "db_conn.php";
+    //Creating function to validate data
+    function validate($data){
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+
+    $error_message = "";
+    $success_message = "";
+
+    $username = validate($_POST['username']);
+    $password = validate($_POST['passw']);
+    $email = validate($_POST['email']);
+    $first_name = validate($_POST['fname']);
+    $last_name = validate($_POST['lname']);
+    $address = validate($_POST['address']);
+    $city = validate($_POST['city']);
+    $post_code = validate($_POST['pcode']);
+    $phone_number = validate($_POST['phone_number']);
+
+    if (empty($username) || empty($password) || empty($email) || empty($first_name) || empty($last_name) || empty($address) || empty($city) || empty($post_code) || empty($phone_number)){
+        $error_message = "All fields are required";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+        $error_message = "Invalid email format.";
+    } else {
+        // Hash the password
+        $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+        
+        //Prepare and bind
+        $stmt = $conn->prepare("INSERT INTO users (username,password,email,first_name,last_name,address,city,post_code,phone_number) VALUES(?,?,?,?,?,?,?,?,?)");
+        $stmt->bind_param("sssssssss", $username, $hashed_password, $email, $first_name,$last_name,$address,$city,$post_code,$phone_number);
+
+        //Execute the statement
+        if ($stmt->execute()){
+            $success_message = "Account created successfully";
+        } else {
+            $error_message = "Error: ". $stmt->error;
+        }
+    //Close the statement and connection
+    $stmt->close();
+    $conn->close();
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,25 +85,26 @@
         </nav>
     </section>
     <main>
-        <h1 class="page-header">CONTACT US</h1>
-        <div class="contact-form-section">
-            <div class="contact-content">
-                <form name="contactForm" onsubmit="return validateForm()">
-                    <label for="fullName">Full Name</label>
-                    <input type="text" id="fname" name="fullName"
-                    placeholder="Enter Full Name">
+        <h1 class="page-header">LOG IN</h1>
+        <form action="login.php" class="login-form" method="post">
+            <?php if (isset($error_message) && !empty($error_message)) { ?>
+                <p class ="error-field"><?php echo $error_message; ?></p>
+            <?php }?>
 
-                    <label for="email">Email</label>
-                    <input type="text" id="email" name="email"
-                    placeholder="Enter Email">
+            <?php if (isset($success_message) && !empty($success_message)) { ?>
+                <p class ="success-field"><?php echo $success_message; ?></p>
+            <?php }?>
+            <label for = "username"><strong>Username:</strong></label>
+            <input type="text" id="username" name ="username"
+            placeholder="Enter Username">
 
-                    <label for="Message">Subject</label>
-                    <textarea id="subject" name="subject" placeholder="subject"
-                    style="height:300px"></textarea>
-                    <input class="submit-btn" type="submit" value="Submit">
-                </form>
-            </div>
-        </div>
+            <label for = "passw"><strong>Password:</strong></label>
+            <input type="password" id="passw" name ="passw"
+            placeholder="Enter Password">
+
+            <p>Don't have an account? <a href="account-creation.php">Sign up here!</a></p>
+            <input class="signup-button" type="submit" value="Login">
+        </form>
         <footer class="footer-section">
             <div class="footer-row">
                 <div class="footer-left">

@@ -19,20 +19,20 @@
             </label>
             <input type ="checkbox" id="checkCart">
             <label for="checkCart" class="checkCartBtn">
-                <a href="cart.html"><i class='bx bx-basket' style='color:#ffffff' ></i></a>
+                <a href="cart.php"><i class='bx bx-basket' style='color:#ffffff' ></i></a>
             </label>
             <input type ="checkbox" id="checkUser">
             <label for="checkUser" class="checkUserBtn">
-                <a href="profile.html"><i class='bx bx-user' style='color:#ffffff' ></i></a>
+                <a href="profile.php"><i class='bx bx-user' style='color:#ffffff' ></i></a>
             </label>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about-us.html">About</a></li>
-                <li><a href="products.html">Shop</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="wishlist.html">Wishlist</a></li> 
+                <li><a href="index.php">Home</a></li>
+                <li><a href="about-us.php">About</a></li>
+                <li><a href="products.php">Shop</a></li>
+                <li><a href="contact.php">Contact</a></li>
+                <li><a href="wishlist.php">Wishlist</a></li> 
             </ul>
-            <a href="index.html"><img class="logo" src="assets/Sneakerz Logo.png" alt="Sneakerz Logo"></a>
+            <a href="index.php"><img class="logo" src="assets/Sneakerz Logo.png" alt="Sneakerz Logo"></a>
         </nav>
     </section>
     <main>
@@ -71,9 +71,9 @@
                     <div>
                        <h3><strong>My Account</strong></h3>
                         <ul>
-                            <li><a href="cart.html">View Cart</a></li>
-                            <li><a href="wishlist.html">View Wishlist</a></li> 
-                            <li><a href="profile.html">Account Settings</a></li>
+                            <li><a href="cart.php">View Cart</a></li>
+                            <li><a href="wishlist.php">View Wishlist</a></li> 
+                            <li><a href="profile.php">Account Settings</a></li>
                         </ul>
                     </div>
                     <div>
