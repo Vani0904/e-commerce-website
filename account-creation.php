@@ -85,56 +85,56 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
         </nav>
     </section>
     <main>
-        <h1 class="page-header">CREATE ACCOUNT</h1>
-        <form action="account-creation.php" class="signup-form" method="post">
-            <?php if (isset($error_message) && !empty($error_message)) { ?>
-                <p class ="error-field"><?php echo $error_message; ?></p>
-            <?php }?>
+            <h1 class="page-header">CREATE ACCOUNT</h1>
+            <form action="account-creation.php" class="signup-form" method="post">
+                <?php if (isset($error_message) && !empty($error_message)) { ?>
+                    <p class ="error-field"><?php echo $error_message; ?></p>
+                <?php }?>
 
-            <?php if (isset($success_message) && !empty($success_message)) { ?>
-                <p class ="success-field"><?php echo $success_message; ?></p>
-            <?php }?>
-            <div>
-                <label for = "username"><strong>Username:</strong></label>
-                <input type="text" id="username" name ="username"
-                placeholder="Enter Username">
+                <?php if (isset($success_message) && !empty($success_message)) { ?>
+                    <p class ="success-field"><?php echo $success_message; ?></p>
+                <?php }?>
+                <div>
+                    <label for = "username"><strong>Username:</strong></label>
+                    <input type="text" id="username" name ="username"
+                    placeholder="Enter Username">
 
-                <label for = "passw"><strong>Password:</strong></label>
-                <input type="password" id="passw" name ="passw"
-                placeholder="Enter Password">
-            </div>
-            <label for ="email"><strong>Email:</strong></label>
-            <input type="email" id="email" name ="email"
-            placeholder="Enter Email">
+                    <label for = "passw"><strong>Password:</strong></label>
+                    <input type="password" id="passw" name ="passw"
+                    placeholder="Enter Password">
+                </div>
+                <label for ="email"><strong>Email:</strong></label>
+                <input type="email" id="email" name ="email"
+                placeholder="Enter Email">
 
-            <label for = "fname"><strong>First name:</strong></label>
-            <input type="text" id="fname" name ="fname"
-            placeholder="Enter First name">
+                <label for = "fname"><strong>First name:</strong></label>
+                <input type="text" id="fname" name ="fname"
+                placeholder="Enter First name">
 
-            <label for = "lname"><strong>Last name:</strong></label>
-            <input type="text" id="lname" name ="lname"
-            placeholder="Enter Last name">
+                <label for = "lname"><strong>Last name:</strong></label>
+                <input type="text" id="lname" name ="lname"
+                placeholder="Enter Last name">
 
-            <label for="address"><strong>Address:</strong></label>
-            <input type="text" id="address" name="address"
-            placeholder="Enter Address">
+                <label for="address"><strong>Address:</strong></label>
+                <input type="text" id="address" name="address"
+                placeholder="Enter Address">
 
-            <label for="city"><strong>City:</strong></label>
-            <input type="text" id="city" name="city"
-            placeholder="Enter City">
+                <label for="city"><strong>City:</strong></label>
+                <input type="text" id="city" name="city"
+                placeholder="Enter City">
 
-            <label for="pcode"><strong>Post Code:</strong></label>
-            <input type="text" id="pcode" name="pcode"
-            placeholder="Enter Post Code">
+                <label for="pcode"><strong>Post Code:</strong></label>
+                <input type="text" id="pcode" name="pcode"
+                placeholder="Enter Post Code">
 
-            <label for="phone_number"><strong>Phone Number:</strong></label>
-            <input type="text" id="phone_number" name="phone_number"
-            placeholder="Enter Phone Number">
-            
-            <p>Already have an account? <a href="login.php">Log in!</a></p>
+                <label for="phone_number"><strong>Phone Number:</strong></label>
+                <input type="text" id="phone_number" name="phone_number"
+                placeholder="Enter Phone Number">
+                
+                <p>Already have an account? <a href="login.php">Log in!</a></p>
 
-            <input class="signup-button" type="submit" value="Create Account">
-        </form>
+                <input class="signup-button" type="submit" value="Create Account">
+            </form>
         <footer class="footer-section">
             <div class="footer-row">
                 <div class="footer-left">

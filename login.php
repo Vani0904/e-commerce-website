@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
     $post_code = validate($_POST['pcode']);
     $phone_number = validate($_POST['phone_number']);
 
-    if (empty($username) || empty($password) || empty($email) || empty($first_name) || empty($last_name) || empty($address) || empty($city) || empty($post_code) || empty($phone_number)){
+    if (empty($username) || empty($password) ){
         $error_message = "All fields are required";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)){
         $error_message = "Invalid email format.";
@@ -85,6 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
         </nav>
     </section>
     <main>
+        <div class="login-section">
         <h1 class="page-header">LOG IN</h1>
         <form action="login.php" class="login-form" method="post">
             <?php if (isset($error_message) && !empty($error_message)) { ?>
@@ -105,6 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
             <p>Don't have an account? <a href="account-creation.php">Sign up here!</a></p>
             <input class="signup-button" type="submit" value="Login">
         </form>
+            </div>
         <footer class="footer-section">
             <div class="footer-row">
                 <div class="footer-left">
