@@ -33,13 +33,13 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
                 <a href="profile.php"><i class='bx bx-user' style='color:#ffffff' ></i></a>
             </label>
             <ul>
-                <li><a href="index.php">Home</a></li>
+                <li><a href="home.php">Home</a></li>
                 <li><a href="about-us.php">About</a></li>
                 <li><a href="products.php">Shop</a></li>
                 <li><a href="contact.php">Contact</a></li>
                 <li><a href="wishlist.php">Wishlist</a></li> 
             </ul>
-            <a href="index.php"><img class="logo" src="assets/Sneakerz Logo.png" alt="Sneakerz Logo"></a>
+            <a href="home.php"><img class="logo" src="assets/Sneakerz Logo.png" alt="Sneakerz Logo"></a>
         </nav>
     </section>
     <main>
@@ -49,7 +49,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
                 <h3></h3>
                 <div class="order-header">
                     <h4>Recent Orders</h4>
-                    <button>Change Account Information</button>
+                    <a href="account-information.php"><button>Change Account Information</button></a>
+                    <a href="logout.php"><input class="logout-button" type="submit" value="Log Out"></a>
                     <div class="order-display">
 
                     </div>

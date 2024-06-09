@@ -1,49 +1,46 @@
 <?php
 session_start();
+include "db_conn.php";
+include "functions.php";
 if ($_SERVER['REQUEST_METHOD'] == "POST"){
-    include "db_conn.php";
-    include "functions.php";
 
     $error_message = "";
     $success_message = "";
 
-    $username = validate($_POST['username']);
+    $username = validate($_POST['username']); 
     $password = validate($_POST['passw']);
+    $email = validate($_POST['email']);
+    $first_name = validate($_POST['fname']);
+    $last_name = validate($_POST['lname']);
+    $address = validate($_POST['address']);
+    $city = validate($_POST['city']);
+    $post_code = validate($_POST['pcode']);
+    $phone_number = validate($_POST['phone_number']);
 
-
-    if (empty($username) || empty($password) ){
+    if (empty($username) || empty($password) || empty($email) || empty($first_name) || empty($last_name) || empty($address) || empty($city) || empty($post_code) || empty($phone_number)){
         $error_message = "All fields are required";
-    }  else {
-        //Prepare and bind
-        $stmt = $conn->prepare("SELECT user_id, username, password, email,first_name, last_name, address, city, post_code, phone_number FROM users WHERE username = ?");
-        $stmt->bind_param("s", $username);
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+        $error_message = "Invalid email format.";
+    } else {
+        // Hash the password
+        $hashed_password = password_hash($password, PASSWORD_BCRYPT);
         
+        //Prepare and bind
+        $stmt = $conn->prepare("INSERT INTO users (username,password,email,first_name,last_name,address,city,post_code,phone_number) VALUES(?,?,?,?,?,?,?,?,?)");
+        $stmt->bind_param("sssssssss", $username, $hashed_password, $email, $first_name,$last_name,$address,$city,$post_code,$phone_number);
 
-        //Execute statement
-        $stmt->execute();
-        $stmt->bind_result($id,$username,$hashed_password,$email,$first_name,$last_name,$address,$city,$post_code,$phone_number);
-        $stmt->fetch();
-
-        //Verify hashed password
-        if (password_verify($password,$hashed_password)){
-            $_SESSION['user_id'] = $id;
-            $_SESSION['username'] = $username;
-            $_SESSION['email'] = $email;
-            $_SESSION['first_name'] = $first_name;
-            $_SESSION['last_name'] = $last_name;
-            $_SESSION['address'] = $address;
-            $_SESSION['city'] = $city;
-            $_SESSION['post_code'] = $post_code;
-            $_SESSION['phone_number'] = $phone_number;
-
-            //Redirect to the home page as a logged in user
-            header("location: home.php");
-            exit();
+        //Execute the statement
+        if ($stmt->execute()){
+            $success_message = "Account created successfully";
         } else {
-            $error_message = "Invalid username or password";
+            $error_message = "Error: ". $stmt->error;
         }
+    //Close the statement and connection
+    $stmt->close();
+    $conn->close();
     }
 }
+if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
 ?>
 
 <!DOCTYPE html>
@@ -84,28 +81,56 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
         </nav>
     </section>
     <main>
-        <div class="login-section">
-        <h1 class="page-header">LOG IN</h1>
-        <form action="login.php" class="login-form" method="post">
-            <?php if (isset($error_message) && !empty($error_message)) { ?>
-                <p class ="error-field"><?php echo $error_message; ?></p>
-            <?php }?>
+            <h1 class="page-header">ACCOUNT DETAILS</h1>
+            <form action="account-creation.php" class="signup-form" method="post">
+                <?php if (isset($error_message) && !empty($error_message)) { ?>
+                    <p class ="error-field"><?php echo $error_message; ?></p>
+                <?php }?>
 
-            <?php if (isset($success_message) && !empty($success_message)) { ?>
-                <p class ="success-field"><?php echo $success_message; ?></p>
-            <?php }?>
-            <label for = "username"><strong>Username:</strong></label>
-            <input type="text" id="username" name ="username"
-            placeholder="Enter Username">
+                <?php if (isset($success_message) && !empty($success_message)) { ?>
+                    <p class ="success-field"><?php echo $success_message; ?></p>
+                <?php }?>
+                <div>
+                    <label for = "username"><strong>Username:</strong></label>
+                    <input type="text" id="username" name ="username"
+                    placeholder="Enter Username" value="<?php echo $_SESSION['username'] ?>">
 
-            <label for = "passw"><strong>Password:</strong></label>
-            <input type="password" id="passw" name ="passw"
-            placeholder="Enter Password">
+                    <label for = "passw"><strong>Password:</strong></label>
+                    <input type="password" id="passw" name ="passw"
+                    placeholder="Enter Password" >
+                </div>
+                <label for ="email"><strong>Email:</strong></label>
+                <input type="email" id="email" name ="email"
+                placeholder="Enter Email"  value="<?php echo $_SESSION['email'] ?>">
 
-            <p>Don't have an account? <a href="account-creation.php">Sign up here!</a></p>
-            <input class="signup-button" type="submit" value="Login">
-        </form>
-            </div>
+                <label for = "fname"><strong>First name:</strong></label>
+                <input type="text" id="fname" name ="fname"
+                placeholder="Enter First name"  value="<?php echo $_SESSION['first_name'] ?>">
+
+                <label for = "lname"><strong>Last name:</strong></label>
+                <input type="text" id="lname" name ="lname"
+                placeholder="Enter Last name"  value="<?php echo $_SESSION['last_name'] ?>">
+
+                <label for="address"><strong>Address:</strong></label>
+                <input type="text" id="address" name="address"
+                placeholder="Enter Address"  value="<?php echo $_SESSION['address'] ?>">
+
+                <label for="city"><strong>City:</strong></label>
+                <input type="text" id="city" name="city"
+                placeholder="Enter City"  value="<?php echo $_SESSION['city'] ?>">
+
+                <label for="pcode"><strong>Post Code:</strong></label>
+                <input type="text" id="pcode" name="pcode"
+                placeholder="Enter Post Code"  value="<?php echo $_SESSION['post_code'] ?>">
+
+                <label for="phone_number"><strong>Phone Number:</strong></label>
+                <input type="text" id="phone_number" name="phone_number"
+                placeholder="Enter Phone Number" value="<?php echo $_SESSION['phone_number'] ?>">
+                
+                <p>Already have an account? <a href="login.php">Log in!</a></p>
+
+                <input class="update-button" type="submit" value="Update Details">
+            </form>
         <footer class="footer-section">
             <div class="footer-row">
                 <div class="footer-left">
@@ -159,3 +184,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
     </main>
 </body>
 </html>
+<?php
+    }else {
+        header("Location: login.php");
+        exit();
+    }
+?>

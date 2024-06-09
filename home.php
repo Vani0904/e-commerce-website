@@ -1,3 +1,8 @@
+<?php
+session_start();
+include "db_conn.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,21 +31,29 @@
                 <a href="profile.php"><i class='bx bx-user' style='color:#ffffff' ></i></a>
             </label>
             <ul>
-                <li><a href="index.php">Home</a></li>
+                <li><a href="home.php">Home</a></li>
                 <li><a href="about-us.php">About</a></li>
                 <li><a href="products.php">Shop</a></li>
                 <li><a href="contact.php">Contact</a></li>
                 <li><a href="wishlist.php">Wishlist</a></li> 
             </ul>
-            <a href="index.php"><img class="logo" src="assets/Sneakerz Logo.png" alt="Sneakerz Logo"></a>
+            <a href="home.php"><img class="logo" src="assets/Sneakerz Logo.png" alt="Sneakerz Logo"></a>
         </nav>
     </section>
     <main>
+        <?php
+            if (isset($_SESSION['user_id']) && isset($_SESSION['username'])){
+        ?>
+        <div class="usr-greeting">
+            <h1>Welcome back, <?php echo $_SESSION['first_name']; ?>!</h1>
+        </div>
+        <?php
+            } 
+        ?>
         <div class="hero-section">
             <div class="hero-content">
                 <h2>New Summer</h2>
                 <h1><strong>Shoes Collection</strong></h1>
-                <p></p>
                 <a href="products.php" class="shop-btn"><button>Shop Now</button></a>
             </div>
         </div>
